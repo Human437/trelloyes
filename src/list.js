@@ -3,7 +3,7 @@ import Card from './card.js';
 import './list.css';
 
 function List(props){
-    const listCards = props.cards.map((card,i)=> <Card title = {card.title} content = {card.content} />)
+    const listCards = props.cards.map((card,i)=> <Card id = {card.id} title = {card.title} content = {card.content} onDeleteItem={props.onDeleteItem}/>)
     return(
         <section className='List'>
             <header className='List-header'>
