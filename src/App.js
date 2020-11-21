@@ -12,9 +12,6 @@ class App extends React.Component {
   }
 
   handleDeleteItem = (id) => {
-    // this.state.lists.map((list,i)=>{
-    //   this.state.lists[i] = {id: i, header: list.header, cardIds: list.cardIds.filter(cardId => {return cardId !== id})}
-    // })
     const newLists = this.state.lists
     newLists.map((list,i)=>{
       newLists[i] = {id: i, header: list.header, cardIds: list.cardIds.filter(cardId => {return cardId !== id})}
