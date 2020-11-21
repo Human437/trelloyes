@@ -22,20 +22,30 @@ class App extends React.Component {
   // //   console.log('handle check item called', { item })
   // // }
 
+  // idMatch(id){
+  //   return
+  // }
+
   handleDeleteItem = (id) => {
     console.log('handle delete item called', { id })
     // const newList = this.state.lists.cardIds.filter(cardId => cardId !== id)
     // this.setState({
     //   cardIds: newList
     // })
-    this.state.lists.map(list=>{
-      list.cardIds.filter(cardId => cardId !== id)
+    this.state.lists.map((list,i)=>{
+      // list.cardIds.filter(cardId => cardId !== id)
+      this.state.lists[i] = {id: i, header: list.header, cardIds: list.cardIds.filter(cardId => {return cardId !== id})}
     })
     this.setState({allCards:this.omit(this.state.allCards,id)})
     console.log(this.omit(this.state.allCards,id))
   }
 
+  handleAddRandomCard(listID){
+    console.log('handle random card called')
+  }
+
   render (){
+    console.log(this.state.lists)
     return (
       <main className='App'>
         <header className = 'App-header'>
@@ -46,7 +56,7 @@ class App extends React.Component {
             header = {list.header} 
             cards = {list.cardIds.map(id => this.state.allCards[id])} 
             onDeleteItem={this.handleDeleteItem}
-            // onCheckItem={this.handleCheckItem}
+            onAddRandomCard = {this.handleAddRandomCard}
             />;})}
         </div>
       </main>
